@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+ height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('bg.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.wrapper{
+  position: relative;
+  max-width: 390px;
+  width: 100%;
+  background: #fff;
+  padding: 33px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  
+}
+.wrapper h2{
+  position: relative;
+  font-weight: 600;
+  color:royalblue;
+}
+
+.wrapper form{
+  margin-top: 10px;
+}
+.wrapper form .input-box{
+  height: 45px;
+  margin: 10px 0;
+}
+
+.form-container{
+  height: 80vh;
+
+}
+.input-box input{
+ background: gainsboro;
+}
+
+form .input-box input{
+  height: 85%;
+  width: 100%;
+  outline: none;
+  padding: 0 15px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #000;
+  border: 0;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.input-box input:focus,
+.input-box input:valid{
+  border-color: #4070f4;
+}
+form .policy{
+  display: flex;
+  align-items: center;
+}
+form h3{
+  color: #707070;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.input-box.button input{
+  color: #fff;
+  letter-spacing: 1px;
+  border: none;
+  background: #0e4bf1;
+  font-weight: 500;
+  cursor: pointer;
+}
+.input-box.button input:hover{
+
+  color: #000;
+  background: limegreen;
+}
+form .text h3{
+ color: #333;
+ width: 100%;
+ text-align: center;
+}
+form .text h3 a{
+  color: #4070f4;
+  text-decoration: none;
+}
+form .text h3 a:hover{
+  text-decoration: underline;
+}
+select {
+  width: 500px;
+  margin: 10px;
+}
+select:focus {
+  min-width: 150px;
+  width: auto;
+}
+
+@media (min-width:200px) and (max-width:800px)
+{
+  .form-container{
+  height: 93vh;
+
+}
+}
+
+    </style>
+    <title>User Registration Form</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-container">
+            <h2 style="text-align: center; border-bottom: 2px solid royalblue; margin-bottom: 20px;" >New-User Registration </h2>
+            <form action="register.php" onsubmit="return validation()" method="post">
+
+                <label  style="font-size: 18px;font-weight: 700; " for="name">First Name:</label>
+                <div class="input-box">
+                    <input type="text" id="name" name="name" placeholder="For Example : Amitabh" required>
+                    <span id="firstusername"></span>
+                  </div>
+
+                <label  style="font-size: 18px;font-weight: 700; " for="name">Last Name:</label>
+                <div class="input-box">
+                    <input type="text" id="lname" name="lname" placeholder="For Example : Kumaar" required>
+                    <span></span>
+                  </div>
+
+                <label  style="font-size: 18px;font-weight: 700; " for="username">Email:</label>
+                <div class="input-box">
+                    <input type="email" id="username" name="username" placeholder="For Example : ak1234@gmail.com" required>
+                  </div>
+                
+                <label style="font-size: 18px; font-weight: 700; " for="password">Password:</label>
+                <div class="input-box">
+                    <input type="password" id="password" name="password" placeholder="Atleast 8 Characters" required>
+                  </div>
+                  
+                
+                <div class="input-box button">
+                    <input type="Submit" value="Register">
+                  </div>
+               
+            </form>
+        </div>
+    </div>
+    <script>
+
+      // function validation(){
+        // var fname = document.getElementById('name').value;
+        function validation() {
+    var fname = document.getElementById('name').value;
+    var lname = document.getElementById('lname').value;
+
+    var nameRegex = /^[a-zA-Z]+$/; // Regular expression to allow only alphabets
+
+    if (!fname.match(nameRegex)) {
+        alert("Please enter a valid first name without numbers or special characters.");
+        return false; // Prevent form submission
+    }
+
+    if (!lname.match(nameRegex)) {
+        alert("Please enter a valid last name without numbers or special characters.");
+        return false; // Prevent form submission
+    }
+
+    // Validation passed
+    return true; // Allow form submission
+}
+
+        
+
+
+
+    
+
+    </script>
+</body>
+</html>
