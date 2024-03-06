@@ -80,7 +80,7 @@ if (!$result) {
         form {
             /* background: blue; */
             margin: -30px 30px;
-            padding: 4px 50px;
+            padding: 5px 50px;
         }
 
         h3 {
