@@ -32,95 +32,112 @@ if (!$result) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Status Form</title>
     <link rel="stylesheet" href="status.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Salsa&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
     <style>
         body {
-            background: #4070f4;
-            font-family: "Kanit", sans-serif;
-            }
-
-        h2{
-            color: rgb(95, 34, 156);
-            text-align: center;
-            font-size: 2rem;
-            text-decoration: underline;
+            background: url('bg.jpg');
+            /* font-family: "Kanit", sans-serif; */
         }
 
-        .wrapper{
-           
+        h2 {
+            color: royalblue;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            text-decoration: underline;
+            margin-bottom: 55px;
+        }
+
+        .wrapper {
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             height: 65vh;
             width: 35%;
             /* background:rgb(147, 243, 51); */
             background: white;
-            border-radius: 15px;
+            border-radius: 10px;
             border: 0;
             margin: auto;
             justify-content: center;
             align-items: center;
-            /* box-shadow: 0 0 10px 5px rgba(245, 222, 179, 0.8); */
-            box-shadow: 0 0 25px rgba(126, 245, 8, 0.8); 
-            
-        }
-form{
-    /* background: blue; */
-    margin: -30px 4px;
-    padding: 4px 50px;
-}
 
-h3{
-    color: black;
-    font-size: 1.4rem;
-    margin: 20px 4px;
-    
-}
-form > label{
-    font-size: 1.3rem;
-}
-        #input1 input{
+
+        }
+
+        form {
+            /* background: blue; */
+            margin: -30px 30px;
+            padding: 4px 50px;
+        }
+
+        h3 {
+            color: black;
+            font-size: 1.4rem;
+            margin: 10px 4px;
+
+        }
+
+        form>label {
+            font-size: 1.3rem;
+        }
+
+        #input1 input {
             height: 25px;
-            width: 300px;
+            width: 250px;
             margin: 0px 3px;
             padding: 3px 4px;
             border: 2px solid black;
             border-radius: 10px;
         }
 
-     #status{
+        #status {
             height: 28px;
-            width: 300px;
+            width: 250px;
             margin: 2px 3px;
-            padding: 3px 54px;
+            padding: 0px 50px;
             font-size: 1rem;
             border-radius: 10px;
+            text-align: center;
         }
 
-        #status:hover{
+        select {
+            width: 250px;
+            margin: 2px 3px;
+            padding: 3px 50px;
+            font-size: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #status option {}
+
+        #status:hover {
             cursor: pointer;
         }
- 
-        .text{
-           margin: 7px 50px;
+
+        .text {
+            margin: 7px 50px;
         }
 
-        .text a{
-        color:rgb(28, 25, 25);
-        transition: all ease 0.5s;
-        }
-        .text a:hover{
-            color: red;
-        }
+
         #button button {
-        font-weight: bold;
-    }
-        
-        button{
+            font-weight: bold;
+        }
+
+        button {
             margin: 30px 5px;
             padding: 2px 5px;
             border-radius: 10px;
@@ -131,49 +148,52 @@ form > label{
             background: lawngreen;
             color: black;
         }
-        button:hover{
+
+        button:hover {
             cursor: pointer;
-            background:limegreen;
+            background: limegreen;
             color: white;
 
         }
-
-        
     </style>
 </head>
-  
-       
+
+
 
 <body>
     <div class="wrapper">
         <h2>Status Form</h2>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-    <h3>Task Name</h3>
-    <div id="input1">
-       <select id="taskName" name="taskName" required>
-    <?php
-    // Populate dropdown list with tasks
-    while ($row = mysqli_fetch_assoc($result)) {
-        $selected = isset($_GET['taskName']) && $_GET['taskName'] === $row['name'] ? 'selected' : '';
-        echo "<option value='" . htmlspecialchars($row['name']) . "' $selected>" . htmlspecialchars($row['name']) . "</option>";
-    }
-    ?>
-</select>
-            
+            <h3>Task Name:</h3>
+            <div id="input1">
+                <select id="taskName" name="taskName" required>
+                    <?php
+                    // Populate dropdown list with tasks
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $selected = isset($_GET['taskName']) && $_GET['taskName'] === $row['name'] ? 'selected' : '';
+                        echo "<option value='" . htmlspecialchars($row['name']) . "' $selected>" . htmlspecialchars($row['name']) . "</option>";
+                    }
+                    ?>
+                </select>
+
             </div>
 
-            <h3>Task Status</h3>
-            <label for="status">Select status:</label>
+            <h3>Task Status:</h3>
+            <!-- <label for="status">Select status:</label> -->
             <select id="status" name="status">
                 <option value="completed">Completed</option>
                 <option value="in-progress">In-Progress</option>
             </select>
 
             <div id="button">
-                <button type="submit">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
             </div>
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

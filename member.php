@@ -44,8 +44,8 @@ if (isset($_POST['logout'])) {
 }
 
 
-header{
-    background: rgb(208, 225, 249);
+nav{
+    background: royalblue;
     margin: 0px -3px;
     height: 50px;
     width: 100%;
@@ -58,11 +58,17 @@ header{
     
 }
 
+nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
 
-header li{
+nav ul li{
     list-style: none;
-    padding: 0px 20px;
-    display: inline-block;
+    margin : 10px 5px;
+    padding: 3px 4px;
     
 }
 
@@ -123,34 +129,38 @@ header a:hover{
     padding: 3px 4px;
     size: 30px; 
 }
+ label{
+    color: whitesmoke;
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin-top: 5px;
 
-#search-bar{
-    position: absolute;
-    width: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 30px;
-    right: 7%;
-    top: 3%;
-    background: whitesmoke;
-    padding: 7px 5px;
-    border-radius: 20px;    
+ }
 
-
-
-}
-
-#search-bar #s-bar{
-    background: transparent;
+ #s-bar{
+    padding: 4px 5px;
     border: 0;
-    outline: 0;
-    padding: 3px 4px;
-   
+    border-radius: 5px;
+
+ }
+
+#s-btn{
+    padding: 3px 7px;
+    background: green;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+
+#lg-btn{
+    padding: 3px 7px;
+    background: green;
+    color: whitesmoke;
+    border-radius: 5px;
+    margin-top: 5px;
 }
 
 
-<style>
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -172,20 +182,7 @@ header a:hover{
             background-color: #cbcccb;
         }
 
-        .search-container {
-            margin: 40px 0;
-        }
-
-        input[type=text] {
-    width: 200px; /* Adjust the width as needed */
-    padding: 10px; /* Adjust the padding as needed */
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #cbcccb;
-    font-size: 16px;
-}
+       
 
 
         input[type=text]:focus {
@@ -201,20 +198,32 @@ header a:hover{
             background-color: yellow; /* You can change this color */
         }
 </style>
+
 <body>
     <header>
-        <img src="https://adoreearth.org/assets/images/ADORE.png" alt="" id="background">
+        <!-- <img src="https://adoreearth.org/assets/images/ADORE.png" alt="" id="background"> -->
         <nav>
-            <form method="GET">
-                <label for="s-bar">Search Task Name:</label>
-                <input type="text" name="search" id="s-bar" placeholder="Enter task name" value="<?php echo htmlspecialchars($searchTerm); ?>">
-                <button type="submit">Search</button>
-            </form>
+            <h2 style="color:#fff;">Member's Page</h2>
+            <ul class="ms-auto">
+
+                <li>
+                <form method="GET">
+                    <label for="s-bar">Search Task Name:</label>
+                    <input type="text" name="search" id="s-bar" placeholder="Enter task name" value="<?php echo htmlspecialchars($searchTerm); ?>">
+                    <button type="submit" id="s-btn">Search</button>
+                </form>
+                </li>
+                <li>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <button type="submit" name="logout" id="lg-btn">Logout</button>
+        </form>
+                </li>
+            </ul>
+           
+            
            
         </nav>
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <button type="submit" name="logout">Logout</button>
-    </form>
+        
     </header>
 
 <!-- Displaying records in a table -->
@@ -259,6 +268,3 @@ echo '<td><a href="update.php?taskName=' . urlencode($taskName) . '">Update</a><
 </body>
 
 </html>
-
-
-
