@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["username"] = $username;
 
             if ($_SESSION["user_role"] == "admin") {
-                header("Location: adore.php");
+                header("Location: Admin.php");
             } else if ($_SESSION["user_role"] == "manager") {
                 header("Location: home.php");
             } else if ($_SESSION["user_role"] == "member") {

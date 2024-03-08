@@ -68,6 +68,12 @@ if (isset($_POST['logout'])) {
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <button type="submit" name="logout">Logout</button>
     </form>
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="Admins.php">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Approval Page</li>
+  </ol>
+</nav>
     <table class="table table-bordered">
         <thead>
           <tr>
