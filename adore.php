@@ -70,10 +70,11 @@ if (isset($_POST['logout'])) {
     </form>
     <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="Admins.php">Home</a></li>
+    <li class="breadcrumb-item"><a href="Admin.php">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">Approval Page</li>
   </ol>
 </nav>
+
     <table class="table table-bordered">
         <thead>
           <tr>

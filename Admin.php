@@ -26,6 +26,8 @@ if (isset($_POST['logout'])) {
       font-weight: 600;
     }
 
+    
+
   
     .nav-item a {
       color: white;
