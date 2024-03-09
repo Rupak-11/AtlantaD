@@ -1,301 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
-    <style>
-      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-body{
- height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url('bg.jpg');
-  background-position: center;
-  background-size: cover;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
-.wrapper{
-  position: relative;
-  max-width: 390px;
-  width: 100%;
-  background: #fff;
-  padding: 33px;
-  border-radius: 6px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-  
-}
-.wrapper h2{
-  position: relative;
-  font-weight: 600;
-  color:royalblue;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-.wrapper form{
-  margin-top: 10px;
-}
-.wrapper form .input-box{
-  height: 45px;
-  margin: 10px 0;
-}
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('bg.jpg');
+      background-position: center;
+      background-size: cover;
+    }
 
-.form-container{
-  height: 80vh;
+    .wrapper {
+      position: relative;
+      max-width: 390px;
+      width: 100%;
+      background: #fff;
+      padding: 33px;
+      border-radius: 6px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 
-}
-.input-box input{
- background: gainsboro;
-}
+    }
 
-form .input-box input{
-  height: 85%;
-  width: 100%;
-  outline: none;
-  padding: 0 15px;
-  font-size: 15px;
-  font-weight: 400;
-  color: #000;
-  border: 0;
-  border-bottom-width: 2.5px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-.input-box input:focus,
-.input-box input:valid{
-  border-color: #4070f4;
-}
-form .policy{
-  display: flex;
-  align-items: center;
-}
-form h3{
-  color: #707070;
-  font-size: 14px;
-  font-weight: 500;
-  margin-left: 10px;
-}
-.input-box.button input{
-  color: #fff;
-  letter-spacing: 1px;
-  border: none;
-  background: #0e4bf1;
-  font-weight: 500;
-  cursor: pointer;
-}
-.input-box.button input:hover{
+    .wrapper h2 {
+      position: relative;
+      font-weight: 600;
+      color: royalblue;
+    }
 
-  color: #000;
-  background: limegreen;
-}
-form .text h3{
- color: #333;
- width: 100%;
- text-align: center;
-}
-form .text h3 a{
-  color: #4070f4;
-  text-decoration: none;
-}
-form .text h3 a:hover{
-  text-decoration: underline;
-}
-select {
-  width: 500px;
-  margin: 10px;
-}
-select:focus {
-  min-width: 150px;
-  width: auto;
-}
+    .wrapper form {
+      margin-top: 10px;
+    }
 
-.form-container .strengthMeter{
-  position: absolute;
-  bottom:0 ;
-  left: 0;
-  width:100%;
-  height: 5px;
-  background: #595757;
-}
+    .wrapper form .input-box {
+      height: 45px;
+      margin: 10px 0;
+    }
 
-.form-container .strengthMeter::before{
-  content: '';
-  position: absolute;
-  height: 100%;
-  width: 0%;
-  transition: 0.5s;
-  background: red;
-}
+    .form-container {
+      height: 80vh;
 
-.form-container.weak .strengthMeter::before{
- width: 10%; 
- background: red;
- 
-}
-.form-container.Medium .strengthMeter::before{
- width: 66.66%; 
- background: #ffa500;
- 
-}
-.form-container.Strong .strengthMeter::before{
- width: 100%; 
- background:#0f0;
-}
+    }
 
-.form-container .strengthMeter::after{
- 
-  position: absolute;
-  top:-42px;
-  left: 38px;
-  color: #fff;
-  font-weight: 600;
-  transition: 0.5s;
-  
-}
+    .input-box input {
+      background: gainsboro;
+    }
 
-.form-container.weak .strengthMeter::after{
- content: 'Your Password Is Weak';
- color: red;
- 
-}
-.form-container.Medium .strengthMeter::after{
- content: 'Your Password Is Medium';
- color:#ffa500 ;
- 
-}
-.form-container.Strong .strengthMeter::after{
- content: 'Your Password Is Strong';
- color:rgb(4, 147, 4);
- 
-}
+    form .input-box input {
+      height: 85%;
+      width: 100%;
+      outline: none;
+      padding: 0 15px;
+      font-size: 15px;
+      font-weight: 400;
+      color: #000;
+      border: 0;
+      border-bottom-width: 2.5px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
 
-@media (min-width:200px) and (max-width:800px)
-{
-  .form-container{
-  height: 93vh;
+    .input-box input:focus,
+    .input-box input:valid {
+      border-color: #4070f4;
+    }
 
-}
-}
+    form .policy {
+      display: flex;
+      align-items: center;
+    }
 
-    </style>
-    <title>User Registration Form</title>
-</head>
-<body>
-    <div class="wrapper">
-        <div class="form-container">
-            <h2 style="text-align: center; border-bottom: 2px solid royalblue; margin-bottom: 20px;" >New-User Registration </h2>
-            <form action="register.php" onsubmit="return validation()" method="post">
+    form h3 {
+      color: #707070;
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 10px;
+    }
 
-                <label  style="font-size: 18px;font-weight: 700; " for="name">First Name:</label>
-                <div class="input-box">
-                    <input type="text" id="name" name="name" placeholder="For Example : Amitabh" required>
-                    <span id="firstusername"></span>
-                  </div>
+    .input-box.button input {
+      color: #fff;
+      letter-spacing: 1px;
+      border: none;
+      background: #0e4bf1;
+      font-weight: 500;
+      cursor: pointer;
+    }
 
-                <label  style="font-size: 18px;font-weight: 700; " for="name">Last Name:</label>
-                <div class="input-box">
-                    <input type="text" id="lname" name="lname" placeholder="For Example : Kumaar" required>
-                    <span></span>
-                  </div>
+    .input-box.button input:hover {
 
-                <label  style="font-size: 18px;font-weight: 700; " for="username">Email:</label>
-                <div class="input-box">
-                    <input type="email" id="username" name="username" placeholder="For Example : ak1234@gmail.com" required>
-                  </div>
-                
-                <label style="font-size: 18px; font-weight: 700; " for="password">Password:</label>
-                <div class="input-box">
-                    <input type="password" id="password" name="password" placeholder="Atleast 8 Characters" required>
-                  </div>
-                  
-                  <div class="strengthMeter"></div>
-                
-                <div class="input-box button">
-                    <input type="Submit" value="Register">
-                  </div>
-               
-            </form>
-        </div>
-    </div>
-    <script>
+      color: #000;
+      background: limegreen;
+    }
 
-      function Strength(password) {
-        let i = 0;
-        if(password.length > 6){
-          i++;
-        }
-       if (password.length >= 10 ){
-          i++;
-        }
+    form .text h3 {
+      color: #333;
+      width: 100%;
+      text-align: center;
+    }
 
-        if (/[A-Z]/.test(password)){
-          i++;
-        }
-      
-        if (/[0-9]/.test(password)){
-          i++;
-        }
+    form .text h3 a {
+      color: #4070f4;
+      text-decoration: none;
+    }
 
-        if (/[A-Za-z0-8]/.test(password)){
-          i++;
-        }
-        return i;
+    form .text h3 a:hover {
+      text-decoration: underline;
+    }
+
+    select {
+      width: 500px;
+      margin: 10px;
+    }
+
+    select:focus {
+      min-width: 150px;
+      width: auto;
+    }
+
+    .form-container .strengthMeter {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: #595757;
+    }
+
+    .form-container .strengthMeter::before {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 0%;
+      transition: 0.5s;
+      background: red;
+    }
+
+    .form-container.weak .strengthMeter::before {
+      width: 10%;
+      background: red;
+
+    }
+
+    .form-container.Medium .strengthMeter::before {
+      width: 66.66%;
+      background: #ffa500;
+
+    }
+
+    .form-container.Strong .strengthMeter::before {
+      width: 100%;
+      background: #0f0;
+    }
+
+    .form-container .strengthMeter::after {
+
+      position: absolute;
+      top: -42px;
+      left: 38px;
+      color: #fff;
+      font-weight: 600;
+      transition: 0.5s;
+
+    }
+
+    .form-container.weak .strengthMeter::after {
+      content: 'Your Password Is Weak';
+      color: red;
+
+    }
+
+    .form-container.Medium .strengthMeter::after {
+      content: 'Your Password Is Medium';
+      color: #ffa500;
+
+    }
+
+    .form-container.Strong .strengthMeter::after {
+      content: 'Your Password Is Strong';
+      color: rgb(4, 147, 4);
+
+    }
+
+    @media (min-width:200px) and (max-width:800px) {
+      .form-container {
+        height: 93vh;
+
       }
+    }
+  </style>
+  <title>User Registration Form</title>
+</head>
 
-      let container = document.querySelector('.form-container');
-      document.addEventListener("keyup" , function(e){
-        let password = document.querySelector('#password').value;
+<body>
+  <div class="wrapper">
+    <div class="form-container">
+      <h2 style="text-align: center; border-bottom: 2px solid royalblue; margin-bottom: 20px;">New-User Registration
+      </h2>
+      <form action="register.php" onsubmit="return validation()" method="post">
 
-        let strength = Strength(password);
-        if(strength <= 2){
-          container.classList.add('weak');
-          container.classList.remove('Medium');
-          container.classList.remove('Strong');
-        } else if(strength>= 2 && strength<=4){
-          container.classList.remove('weak');
-          container.classList.add('Medium');
-          container.classList.remove('Strong');
-        }
-        else{
-          container.classList.remove('weak');
-          container.classList.remove('Medium');
-          container.classList.add('Strong');
-        }
-      })
-      // function validation(){
-        // var fname = document.getElementById('name').value;
-        function validation() {
-    var fname = document.getElementById('name').value;
-    var lname = document.getElementById('lname').value;
+        <label style="font-size: 18px;font-weight: 700; " for="name">First Name:</label>
+        <div class="input-box">
+          <input type="text" id="name" name="name" placeholder="For Example : Amitabh" required>
+          <span id="firstusername"></span>
+        </div>
 
-    var nameRegex = /^[a-zA-Z]+$/; // Regular expression to allow only alphabets
+        <label style="font-size: 18px;font-weight: 700; " for="name">Last Name:</label>
+        <div class="input-box">
+          <input type="text" id="lname" name="lname" placeholder="For Example : Kumaar" required>
+          <span></span>
+        </div>
 
-    if (!fname.match(nameRegex)) {
+        <label style="font-size: 18px;font-weight: 700; " for="username">Email:</label>
+        <div class="input-box">
+          <input type="email" id="username" name="username" placeholder="For Example : ak1234@gmail.com" required>
+        </div>
+
+        <label style="font-size: 18px; font-weight: 700; " for="password">Password:</label>
+        <div class="input-box">
+          <input type="password" id="password" name="password" placeholder="Atleast 8 Characters" required>
+        </div>
+
+        <div class="strengthMeter"></div>
+
+        <div class="input-box button">
+          <input type="Submit" value="Register">
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <script>
+
+    // function validation(){
+    // var fname = document.getElementById('name').value;
+    function validation() {
+      var fname = document.getElementById('name').value;
+      var lname = document.getElementById('lname').value;
+
+      var nameRegex = /^[a-zA-Z]+$/; // Regular expression to allow only alphabets
+
+      if (!fname.match(nameRegex)) {
         alert("Please enter a valid first name without numbers or special characters.");
         return false; // Prevent form submission
-    }
+      }
 
-    if (!lname.match(nameRegex)) {
+      if (!lname.match(nameRegex)) {
         alert("Please enter a valid last name without numbers or special characters.");
         return false; // Prevent form submission
+      }
+
+      // Validation passed
+      return true; // Allow form submission
     }
 
-    // Validation passed
-    return true; // Allow form submission
-}
-
-        
 
 
+    function Strength(password) {
+      let i = 0;
+      if (password.length > 6) {
+        i++;
+      }
+      if (password.length >= 10) {
+        i++;
+      }
 
-    
+      if (/[A-Z]/.test(password)) {
+        i++;
+      }
 
-    </script>
+      if (/[0-9]/.test(password)) {
+        i++;
+      }
+
+      if (/[A-Za-z0-8]/.test(password)) {
+        i++;
+      }
+      return i;
+    }
+
+    let container = document.querySelector('.form-container');
+
+    document.addEventListener("keyup", function (e) {
+      let password = document.querySelector('#password').value;
+
+
+      if (password.trim() === '') {
+        container.classList.remove('weak');
+        container.classList.remove('Medium');
+        container.classList.remove('Strong');
+        return;
+      }
+
+      let strength = Strength(password);
+      if (strength <= 2) {
+        container.classList.add('weak');
+        container.classList.remove('Medium');
+        container.classList.remove('Strong');
+      } else if (strength >= 2 && strength <= 4) {
+        container.classList.remove('weak');
+        container.classList.add('Medium');
+        container.classList.remove('Strong');
+      }
+      else {
+        container.classList.remove('weak');
+        container.classList.remove('Medium');
+        container.classList.add('Strong');
+      }
+    })
+
+
+
+
+  </script>
 </body>
+
 </html>
