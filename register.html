@@ -115,6 +115,66 @@ select:focus {
   width: auto;
 }
 
+.form-container .strengthMeter{
+  position: absolute;
+  bottom:0 ;
+  left: 0;
+  width:100%;
+  height: 5px;
+  background: #595757;
+}
+
+.form-container .strengthMeter::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  transition: 0.5s;
+  background: red;
+}
+
+.form-container.weak .strengthMeter::before{
+ width: 10%; 
+ background: red;
+ 
+}
+.form-container.Medium .strengthMeter::before{
+ width: 66.66%; 
+ background: #ffa500;
+ 
+}
+.form-container.Strong .strengthMeter::before{
+ width: 100%; 
+ background:#0f0;
+}
+
+.form-container .strengthMeter::after{
+ 
+  position: absolute;
+  top:-42px;
+  left: 38px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.5s;
+  
+}
+
+.form-container.weak .strengthMeter::after{
+ content: 'Your Password Is Weak';
+ color: red;
+ 
+}
+.form-container.Medium .strengthMeter::after{
+ content: 'Your Password Is Medium';
+ color:#ffa500 ;
+ 
+}
+.form-container.Strong .strengthMeter::after{
+ content: 'Your Password Is Strong';
+ color:rgb(4, 147, 4);
+ 
+}
+
 @media (min-width:200px) and (max-width:800px)
 {
   .form-container{
@@ -154,6 +214,7 @@ select:focus {
                     <input type="password" id="password" name="password" placeholder="Atleast 8 Characters" required>
                   </div>
                   
+                  <div class="strengthMeter"></div>
                 
                 <div class="input-box button">
                     <input type="Submit" value="Register">
@@ -164,6 +225,49 @@ select:focus {
     </div>
     <script>
 
+      function Strength(password) {
+        let i = 0;
+        if(password.length > 6){
+          i++;
+        }
+       if (password.length >= 10 ){
+          i++;
+        }
+
+        if (/[A-Z]/.test(password)){
+          i++;
+        }
+      
+        if (/[0-9]/.test(password)){
+          i++;
+        }
+
+        if (/[A-Za-z0-8]/.test(password)){
+          i++;
+        }
+        return i;
+      }
+
+      let container = document.querySelector('.form-container');
+      document.addEventListener("keyup" , function(e){
+        let password = document.querySelector('#password').value;
+
+        let strength = Strength(password);
+        if(strength <= 2){
+          container.classList.add('weak');
+          container.classList.remove('Medium');
+          container.classList.remove('Strong');
+        } else if(strength>= 2 && strength<=4){
+          container.classList.remove('weak');
+          container.classList.add('Medium');
+          container.classList.remove('Strong');
+        }
+        else{
+          container.classList.remove('weak');
+          container.classList.remove('Medium');
+          container.classList.add('Strong');
+        }
+      })
       // function validation(){
         // var fname = document.getElementById('name').value;
         function validation() {
