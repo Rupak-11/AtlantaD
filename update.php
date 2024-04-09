@@ -167,16 +167,15 @@ if (!$result) {
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <h3>Task Name:</h3>
             <div id="input1">
-                <select id="taskName" name="taskName" required>
-                    <?php
-                    // Populate dropdown list with tasks
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $selected = isset($_GET['taskName']) && $_GET['taskName'] === $row['name'] ? 'selected' : '';
-                        echo "<option value='" . htmlspecialchars($row['name']) . "' $selected>" . htmlspecialchars($row['name']) . "</option>";
-                    }
-                    ?>
-                </select>
+                
+            <?php
+                // Fetch task name from the URL parameter
+                $selectedTask = isset($_GET['selectedTask']) ? $_GET['selectedTask'] : '';
 
+                // Display the selected task name
+                echo "<span>" . htmlspecialchars($selectedTask) . "</span>";
+                ?>
+                <input type="hidden" name="taskName" value="<?php echo htmlspecialchars($selectedTask); ?>">
             </div>
 
             <h3>Task Status:</h3>

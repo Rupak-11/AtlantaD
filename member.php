@@ -7,6 +7,8 @@ $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 
 $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
 
+
+
 $query = "SELECT tname, name, status FROM tform WHERE recipient_email = '$username'";
 if (!empty($searchTerm)) {
     $searchTerm = mysqli_real_escape_string($con, $searchTerm);
@@ -243,7 +245,7 @@ header a:hover{
   <thead>
     <tr>
       <th scope="col">Task name</th>
-      <th scope="col">Assigned By</th>
+      
       <th scope="col">Task Status</th>
       <th scope="col">Updates</th>
     </tr>
@@ -254,10 +256,11 @@ header a:hover{
                 $taskName = $row['name'];
                 $highlightClass = $searchTerm != '' && stripos($taskName, $searchTerm) !== false ? 'highlight' : '';
                 echo "<tr>";
-                echo "<td>" . $row['tname'] . "</td>"; // Display Team Member Name
-                echo "<td class='$highlightClass'>" . $taskName . "</td>";  // Display Task Name with highlighting
+                echo "<td>" . $row['name'] . "</td>"; // Display Team Member Name
+                
+
                 echo "<td>" . $row['status'] . "</td>";  // Display Status
-echo '<td><a href="update.php?taskName=' . urlencode($taskName) . '">Update</a></td>';
+                echo '<td><a href="update.php?selectedTask=' . urlencode($taskName) . '">Update</a></td>';
                 echo "</tr>";
             }
             ?>

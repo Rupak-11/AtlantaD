@@ -3,11 +3,9 @@ include 'connect.php';
 session_start();
 $username = '';
 
-
 if (isset($_SESSION["username"]) && !empty($_SESSION["username"])) {
   $username = $_SESSION["username"];
 }
-
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send"])) {
     $tname = $_POST['tname'];
@@ -17,13 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send"])) {
     $message = $_POST['message'];
     $currentDate = date("Y-m-d"); 
 
-    // Validate the email address
-    if (filter_var($userEmail, FILTER_VALIDATE_EMAIL)) {
-        // Use $userEmail as the 'From' address in your mailer
-        $fromEmail = $userEmail;
+    if (filter_var($recipient_email, FILTER_VALIDATE_EMAIL)) {
+       
+        $fromEmail = $recipient_email;
         echo "Data inserted successfully";
         
-        // Insert data into the database
         $sql = "INSERT INTO tform(tname, name, username, recipient_email, message, currentDate) 
                 VALUES('$tname', '$name', '$username', '$recipient_email', '$message', '$currentDate')";
         
@@ -33,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["send"])) {
             die(mysqli_error($con));
         }
     } else {
-        // Handle the case where the email address is invalid
+        
         echo "Invalid email address";
     }
 }
@@ -45,13 +41,11 @@ $userOptions = "";
 
 if ($result) {
     while ($row = $result->fetch_assoc()) {
-        $userOptions .= "<option value='{$row['name']}-{$row['role']}'>{$row['name']} - {$row['role']}</option>";
+      $userOptions .= "<option value='{$row['name']}-{$row['role']}'>{$row['name']} - {$row['role']}</option>";
     }
 } else {
     echo "Query failed: " . mysqli_error($con);
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +56,8 @@ if ($result) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600);
 /*
@@ -263,11 +259,10 @@ select:focus {
 
 
     </style>
-
 </head>
-<body>
-<div class="wrapper">
 
+<body>
+    <div class="wrapper">
         <div class="form-container">
             <form id="contact" action="mail.php" method="post">
                 <h1>Task Form</h1>
@@ -275,29 +270,22 @@ select:focus {
                 <input type="hidden" name="email" value="<?php echo $username; ?>">
 
                 <div class="input-box">
-                <select name="tname" id="tname" tabindex="8">
+                <label for="name">Task To Be Given To:</label>
+                    <select name="tname" id="tname" tabindex="8">
                         <?php echo $userOptions; ?>
                     </select>
-                    <label for="name">Task Been Given to Team Member:</label>
-                    <select name="name" placeholder="Task been already given to team members" id="name" style="width:350px;">
-                        <?php
-                        $query = "SELECT tname, name FROM tform WHERE username = '$username'";
-                        $result = mysqli_query($con, $query);
 
-                        if ($result) {
-                            while ($row = $result->fetch_assoc()) {
-                                $optionValue = $row['name'] . '-' . $row['tname'];
-                                echo "<option value='" . $optionValue . "'>" . $optionValue . "</option>";
-                            }
-                        } else {
-                            echo "Query failed: " . mysqli_error($con);
-                        }
-                        ?>
-                         
+                    <label for="name">Task Been Given to Team Member:</label>
+                
+
+                    <select name="name" placeholder="Task been already given to team members" id="name" style="width:350px;">
+                        
                     </select>
-                    <label for="name">Task Name:</label>
-                    <input type="text" id="name" name="name" style="width:350px;" placeholder="Enter Name" style="display:none;">
                 </div>
+
+                <div class="input-box">
+                    <input id="name" name="name" id="name" placeholder="Task Name">
+</div>
 
                 <div class="input-box">
                     <input id="recipient_email" name="recipient_email" placeholder="recipient-email" type="email" tabindex="3">
@@ -309,11 +297,10 @@ select:focus {
                     <textarea id="message" name="message" placeholder="Remarks" tabindex="5" rows="15" cols="50" style="width:370px; height: 70px;"></textarea>
                 </div>
 
-                <div class="input-box">
+                <div class="input-box" id="date-input">
                     <label for="currentDate">Date:</label>
-                    <input type="date" id="currentDate" name="currentDate" tabindex="6">
+                    <input type="date" name="currentDate" tabindex="6">
                 </div>
-
                 <br>
 
                 <div class="input-box button">
@@ -322,6 +309,45 @@ select:focus {
             </form>
         </div>
     </div>
+
+    <script>
+
+$(document).ready(function() {
+            
+            var currentDate = new Date().toISOString().split('T')[0];
+            $('#date-input input[type="date"]').val(currentDate);
+
+      
+            $('#tname').on('change', function() {
+                var selectedTname = $(this).val();
+                $('#name').empty(); 
+                $.ajax({
+                    url: 'get_names.php',
+                    type: 'POST',
+                    data: { tname: selectedTname },
+                    success: function(response) {
+                        $('#name').html(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Failed to fetch names: " + error);
+                    }
+                });
+
+                $.ajax({
+    url: 'get_email.php',
+    type: 'POST',
+    data: { tname: selectedTname }, 
+    success: function(response) {
+        $('#recipient_email').val(response); 
+    },
+    error: function(xhr, status, error) {
+        console.error("Failed to fetch email: " + error);
+    }
+});
+
+            });
+        });
+    </script>
 </body>
 
 </html>
