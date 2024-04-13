@@ -110,6 +110,99 @@ if (isset($_POST['logout'])) {
     #soan-text :hover{
       color: black;
     }
+
+
+
+    #my-tasks, #mem-task{
+      border-radius: 20px;
+     
+    }
+
+   
+
+    #my-tasks{
+   
+      height: 50vh;
+      width: 40%;
+      background: #1844bf;
+      text-align: center;
+      scale: 1;
+      transition: all ease 0.5s;
+   
+    }
+    #my-tasks:hover{
+      scale: 1.1;
+    }
+
+
+    #mem-task{
+      height: 50vh;
+      width: 40%;
+      background: rgb(152, 73, 231);
+      scale: 1;
+      transition: all ease 0.5s;
+    }
+
+    #mem-task:hover{
+      scale: 1.1;
+    }
+    
+    @media (min-width:200px) and (max-width :800px)
+    {
+      .Task-section{
+      
+      height: 70vh;
+      width: 100%;
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #my-tasks{
+   
+   height: 50vh;
+   width: 70%;
+   background: #1844bf;
+   text-align: center;
+   margin-bottom: 100px;
+   scale: 1;
+   transition: all ease 0.5s;
+
+ }
+ #my-tasks:hover{
+   scale: 1.1;
+ }
+
+
+ #mem-task{
+   height: 50vh;
+   width: 70%;
+   background: rgb(152, 73, 231);
+   scale: 1;
+   transition: all ease 0.5s;
+ }
+
+ #span-text{
+      height: 25vh;
+      width: 55%;
+      margin: auto;
+      margin-top: 100px;
+      text-align: center;
+      color: whitesmoke;
+     border: none;
+     font-size: 1rem;
+    }
+
+    #span-text h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    /* padding-left: 15px; */
+}
+    }
+
+   
   </style>
   
 <body>
@@ -126,7 +219,7 @@ if (isset($_POST['logout'])) {
                 <a class="nav-link " href="adore.php">Approval Page</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="task.php">Task Form</a>
+                <a class="nav-link" href="taskup.php">Task Form</a>
               </li>
               <li class="nav-item">
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -150,6 +243,8 @@ if (!$result) {
 }
 ?>
 <main>
+
+
 <section class="Task-section">
 <div id="my-tasks">
   <a href="AdminTasks.php">

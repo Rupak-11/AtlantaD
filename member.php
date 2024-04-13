@@ -50,7 +50,7 @@ nav{
     background: royalblue;
     margin: 0px -3px;
     height: 50px;
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     justify-content: center;
     align-items: center;

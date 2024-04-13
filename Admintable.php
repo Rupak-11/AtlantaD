@@ -43,6 +43,21 @@ if (isset($_POST['logout'])) {
     margin-top: 5px;
     margin-left: 15px;
   }
+
+  .table-box{
+    width: 100%;
+    height: 50vh;
+    /* border: 2px solid red; */
+  }
+
+  @media (min-width:200px) and (max-width :800px)
+    {
+      .table-box{
+    /* border: 2px solid yellow; */
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+    }
 </style>
 
 <body>
@@ -60,7 +75,7 @@ if (isset($_POST['logout'])) {
               <a class="nav-link " href="adore.php">Approval Page</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="task.php">Task Form</a>
+              <a class="nav-link" href="taskup.php">Task Form</a>
             </li>
             <li class="nav-item">
               <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -83,33 +98,37 @@ if (!$result) {
     die("Query failed: " . mysqli_error($con));
 }
 ?>
-    <table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      
-      <th scope="col">Task Name</th>
-      <th scope="col">Task Given By</th>
-      <th scope="col">Task Given To</th>
-      <th scope="col">Date Of Allocation</th>
-      <th scope="col">Task Status</th>
-    </tr>
-  </thead>
-  <tbody>
-  <?php
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                 
-                    echo "<td>{$row['name']}</td>";
-                    echo "<td>{$row['username']}</td>";
-                    echo "<td>{$row['recipient_email']}</td>";
-                    
-                    echo "<td>{$row['currentDate']}</td>";
-                    echo "<td>{$row['status']}</td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
+
+<div class="table-box">
+
+  <table class="table table-striped table-bordered">
+<thead>
+  <tr>
+    
+    <th scope="col">Task Name</th>
+    <th scope="col">Task Given By</th>
+    <th scope="col">Task Given To</th>
+    <th scope="col">Date Of Allocation</th>
+    <th scope="col">Task Status</th>
+  </tr>
+</thead>
+<tbody>
+<?php
+              while ($row = mysqli_fetch_assoc($result)) {
+                  echo "<tr>";
+               
+                  echo "<td>{$row['name']}</td>";
+                  echo "<td>{$row['username']}</td>";
+                  echo "<td>{$row['recipient_email']}</td>";
+                  
+                  echo "<td>{$row['currentDate']}</td>";
+                  echo "<td>{$row['status']}</td>";
+                  echo "</tr>";
+              }
+              ?>
+          </tbody>
 </table>
+</div>
   </main>
 
 

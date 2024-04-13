@@ -56,7 +56,7 @@ if (isset($_POST['logout'])) {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" href="task.php">Task Form</a>
+                <a class="nav-link" href="taskup.php">Task Form</a>
               </li>
               <li class="nav-item">
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
